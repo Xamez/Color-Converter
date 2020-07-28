@@ -1,0 +1,24 @@
+apply plugin: 'java'
+apply plugin: 'jacoco'
+apply plugin: 'application'
+
+group = 'Xamez'
+
+mainClassName = 'Xamez.ColorConverter.ColorConverter'
+
+setLibsDirName('E:/Developpement/EXPORT')
+
+repositories {
+    jcenter()
+}
+
+dependencies {}
+
+jar {
+    
+    archiveName = 'ColorConverter.jar'
+    destinationDirectory = file('E:/Developpement/EXPORT')
+    manifest {attributes 'Main-Class': 'Xamez.ColorConverter.ColorConverter'}
+    from(configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }) {}
+    
+}
